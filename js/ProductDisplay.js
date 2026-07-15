@@ -6,13 +6,53 @@ fetch("data/products.json")
     .then(response => response.json())
     .then(products => {
         const product = products.find(p => p.id == id);
-        productInfo.innerHTML = `<section class="product-page">
-                                    <img src=${product.image} alt="Fox Keychain">
-                                    <div>
-                                        <h2>${product.name}</h2>
-                                        <p>${product.description}</p>
-                                        <p>${product.price}</p>
-                                    </div>
-                                    <a href="#" class="cart-button">Add to cart</a>
-                                </section>`
-    })
+        productInfo.innerHTML = `
+<div class="product-page">
+<div class="product-image">
+
+    <img src="${product.image}" alt="${product.name}">
+
+</div>
+
+
+<div class="product-info">
+
+    <div>
+
+        <h1>${product.name}</h1>
+
+        <p>${product.description}</p>
+
+    </div>
+
+
+    <div class="product-options">
+
+        <label>
+            Color:
+        </label>
+
+        <select>
+            <option>White</option>
+            <option>Orange</option>
+        </select>
+
+
+        <label>
+            Quantity:
+        </label>
+
+        <input type="number" value="1">
+
+
+        <button class="cart-button">
+            Add to Cart
+        </button>
+
+    </div>
+
+</div>
+</div>
+
+`;
+    });

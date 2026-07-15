@@ -86,8 +86,11 @@ nav a:hover{
     box-shadow:0 3px 10px rgba(255, 255, 255, 0.4);
 }
 
+.product-card {
+    display:inline-block;
+}
 .product-card img {
-    width:20%;
+    width:300px;
     border-radius:10px;
 }
 .product-card:hover {
@@ -99,13 +102,30 @@ nav a:hover{
     padding:80px;
     justify-content:center;
     align-items:center;
-    gap:30px;
+    gap:50px;
     display:flex;
+}
+.product-image img {
+    width:500px;
+    height:500px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.product-info {
+    color:white;
+    height:500px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
     text-align:center;
 }
-.product-page img {
-    width:50%;
-    border-radius:10px;
+
+.product-options {
+    display:flex;
+    font-family:Arial;
+    flex-direction:column;
+    gap:15px;
 }
 
 .cart-button {
@@ -114,6 +134,9 @@ nav a:hover{
     font-size:30px;
     color:rgb(0, 0, 0);
     background:white;
+    padding:15px 30px;
+    width:fit-content;
+    cursor:pointer;
 }
 .cart-button:hover {
     transform:translateY(-10px);
