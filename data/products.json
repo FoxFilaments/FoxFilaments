@@ -4,6 +4,7 @@
         "name":"Fox Keychain",
         "price":4.99,
         "image":"images/foxkeychain.png",
+        "coloroptions":["White", "Orange"],
         "description":"A keychain in the shape of a fox"
     },
     {

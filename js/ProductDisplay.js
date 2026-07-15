@@ -6,6 +6,15 @@ fetch("data/products.json")
     .then(response => response.json())
     .then(products => {
         const product = products.find(p => p.id == id);
+        let colorOptions ="";
+        if(product.coloroptions)
+        {
+            product.coloroptions.forEach(color => {
+                colorOptions += `<option>${color}</option>`;
+            });
+        } else {
+            colorOptions = `<option>Default</option>`
+        }
         productInfo.innerHTML = `
 <div class="product-page">
 <div class="product-image">
@@ -33,8 +42,7 @@ fetch("data/products.json")
         </label>
 
         <select>
-            <option>White</option>
-            <option>Orange</option>
+            <option>${colorOptions}</option>
         </select>
 
 
