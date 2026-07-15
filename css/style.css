@@ -141,3 +141,7 @@ nav a:hover{
 .cart-button:hover {
     transform:translateY(-10px);
 }
+
+.stock {
+    font-size:5f;
+}

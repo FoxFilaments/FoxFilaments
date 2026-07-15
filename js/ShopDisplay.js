@@ -11,6 +11,9 @@ fetch("data/products.json")
                                             <h3>${product.name}</h3>
                                             <p>$${product.price}</p>
                                         </div>
+                                        <div class="stock">
+                                            <p>${product.stock} left in stock</p>
+                                        </div>
                                     </a>`;
         });
     });

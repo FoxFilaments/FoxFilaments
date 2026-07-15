@@ -7,10 +7,10 @@ fetch("data/products.json")
     .then(products => {
         const product = products.find(p => p.id == id);
         let colorOptions ="";
-        if(product.coloroptions)
+        if(product.variants)
         {
-            product.coloroptions.forEach(color => {
-                colorOptions += `<option>${color}</option>`;
+            product.variants.forEach((variant, index) => {
+                colorOptions += `<option value="${variant.color}" ${index === 0 ? "selected" : ""}>${variant.color}</option>`;
             });
         } else {
             colorOptions = `<option>Default</option>`
@@ -36,13 +36,15 @@ fetch("data/products.json")
 
 
     <div class="product-options">
+        
+        <p id="stock-display">${product.variants[0].stock} left in stock</p>
 
         <label>
             Color:
         </label>
 
-        <select>
-            <option>${colorOptions}</option>
+        <select id="color-select">
+           ${colorOptions}
         </select>
 
 
@@ -63,4 +65,18 @@ fetch("data/products.json")
 </div>
 
 `;
-    });
+
+const colorSelect = document.getElementById("color-select");
+const stockDisplay = document.getElementById("stock-display");
+colorSelect.addEventListener("change", () => {
+
+    const selectedColor = colorSelect.value;
+
+    const selectedVariant = product.variants.find(variant => 
+        variant.color == selectedColor
+    );
+
+    stockDisplay.innerHTML = `${selectedVariant.stock} left in stock`;
+
+}); 
+});
