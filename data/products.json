@@ -1,0 +1,16 @@
+[
+    {
+        "id":1,
+        "name":"Fox Keychain",
+        "price":4.99,
+        "image":"images/foxkeychain.png",
+        "description":"A keychain in the shape of a fox"
+    },
+    {
+        "id":2,
+        "name":"Fursuit Handler Badge",
+        "price":9.99,
+        "image":"images/wip.jpg",
+        "description":"A badge with the text 'Fursuit Handler'"
+    }
+]
