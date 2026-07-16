@@ -52,7 +52,12 @@ fetch("data/products.json")
             Quantity:
         </label>
 
-        <input type="number" value="1">
+        <input 
+        id="quantity"
+        type="number" 
+        value="1"
+        min="1"
+        max="${product.variants[0].stock}>
 
 
         <button class="cart-button">
@@ -69,6 +74,7 @@ fetch("data/products.json")
 const colorSelect = document.getElementById("color-select");
 const stockDisplay = document.getElementById("stock-display");
 const productImage = document.getElementById("product-image");
+const quantityInput = document.getElementById("quantity");
 colorSelect.addEventListener("change", () => {
 
     const selectedColor = colorSelect.value;
@@ -79,5 +85,6 @@ colorSelect.addEventListener("change", () => {
 
     stockDisplay.innerHTML = `${selectedVariant.stock} left in stock`;
     productImage.src = selectedVariant.image;
+    quantityInput.max = selectedVariant.stock;
 }); 
 });
