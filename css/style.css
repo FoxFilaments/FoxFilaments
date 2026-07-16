@@ -95,6 +95,7 @@ nav a:hover{
     width:300px;
     height:300px;
     border-radius:10px;
+    object-fit:cover;
 }
 .product-card:hover {
     transform:translateY(-10px);
@@ -126,7 +127,7 @@ nav a:hover{
 
 .product-options {
     display:flex;
-    font-family:Arial;
+    font-family:Cambria;
     flex-direction:column;
     gap:15px;
 }

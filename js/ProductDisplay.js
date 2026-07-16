@@ -7,6 +7,7 @@ fetch("data/products.json")
     .then(products => {
         const product = products.find(p => p.id == id);
         let colorOptions ="";
+        let quantityOptions = "";
         if(product.variants)
         {
             product.variants.forEach((variant, index) => {
@@ -14,6 +15,9 @@ fetch("data/products.json")
             });
         } else {
             colorOptions = `<option>Default</option>`
+        }
+        for(let i = 1; i <= product.variants[0].stock; i++) {
+            quantityOptions += `<option>${i}</option>`
         }
         productInfo.innerHTML = `
 <div class="product-page">
@@ -52,12 +56,7 @@ fetch("data/products.json")
             Quantity:
         </label>
 
-        <input 
-        id="quantity"
-        type="number" 
-        value="1"
-        min="1"
-        max="${product.variants[0].stock}>
+        <select id="quantity-select">${quantityOptions}</select>
 
 
         <button class="cart-button">
@@ -74,7 +73,7 @@ fetch("data/products.json")
 const colorSelect = document.getElementById("color-select");
 const stockDisplay = document.getElementById("stock-display");
 const productImage = document.getElementById("product-image");
-const quantityInput = document.getElementById("quantity");
+const quantitySelect = document.getElementById("quantity-select");
 colorSelect.addEventListener("change", () => {
 
     const selectedColor = colorSelect.value;
@@ -85,6 +84,10 @@ colorSelect.addEventListener("change", () => {
 
     stockDisplay.innerHTML = `${selectedVariant.stock} left in stock`;
     productImage.src = selectedVariant.image;
-    quantityInput.max = selectedVariant.stock;
+    quantitySelect.innerHTML = "";
+    for(let i = 1; i <= selectedVariant.stock; i++) {
+        quantitySelect.innerHTML += `<option>${i}</option>`;
+    }
+    
 }); 
 });
