@@ -149,3 +149,13 @@ nav a:hover{
 .stock {
     font-size:5f;
 }
+
+.list {
+    display:inline-block;
+    gap:15px;
+    padding:15px;
+}
+.list img {
+    width:150px;
+    height:150px;
+}

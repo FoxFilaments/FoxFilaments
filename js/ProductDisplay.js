@@ -96,23 +96,25 @@ colorSelect.addEventListener("change", () => {
 cartButton.addEventListener("click", () => {
     
     const selectedColor = colorSelect.value;
-    const selectedQuantity = Number(quantitySelect.value);
-    let cart = localStorage.getItem("cart");
-    if(cart){
-        cart = JSON.parse(cart);
-    }else{
-        cart = [];
+    const selectedQuantity = quantitySelect.value;
+    if(selectedQuantity != 0) {
+        let cart = localStorage.getItem("cart");
+        if(cart){
+            cart = JSON.parse(cart);
+        }else{
+            cart = [];
+        }
+
+        const cartItem = {
+            id:product.id,
+            color:selectedColor,
+            quantity:selectedQuantity
+        };
+
+        cart.push(cartItem);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert("Added to cart!");
     }
-
-    const cartItem = {
-        id:product.id,
-        color:selectedColor,
-        quantity:selectedQuantity
-    };
-
-    cart.push(cartItem);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    alert("Added to cart!");
 });
 
 });
