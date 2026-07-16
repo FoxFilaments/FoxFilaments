@@ -3,16 +3,16 @@
         "id":1,
         "name":"Fox Keychain",
         "price":4.99,
-        "stock":5,
-        "image":"images/foxkeychain.png",
         "variants":[
             {
                 "color":"White",
-                "stock":8
+                "stock":8,
+                "image":"images/whitefox.jpg"
             },
             {
                 "color":"Orange",
-                "stock":4
+                "stock":4,
+                "image":"images/orangefox.jpg"
             }
         ],
         "description":"A keychain in the shape of a fox"
@@ -21,8 +21,13 @@
         "id":2,
         "name":"Fursuit Handler Badge",
         "price":9.99,
-        "stock":0,
-        "image":"images/wip.jpg",
+        "variants":[
+            {
+                "color":"Default",
+                "stock":0,
+                "image":"images/wip.jpg"
+            }
+        ],
         "description":"A badge with the text 'Fursuit Handler'"
     }
 ]

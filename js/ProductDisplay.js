@@ -19,7 +19,7 @@ fetch("data/products.json")
 <div class="product-page">
 <div class="product-image">
 
-    <img src="${product.image}" alt="${product.name}">
+    <img id="product-image" src="${product.variants[0].image}" alt="${product.name}">
 
 </div>
 
@@ -68,6 +68,7 @@ fetch("data/products.json")
 
 const colorSelect = document.getElementById("color-select");
 const stockDisplay = document.getElementById("stock-display");
+const productImage = document.getElementById("product-image");
 colorSelect.addEventListener("change", () => {
 
     const selectedColor = colorSelect.value;
@@ -77,6 +78,6 @@ colorSelect.addEventListener("change", () => {
     );
 
     stockDisplay.innerHTML = `${selectedVariant.stock} left in stock`;
-
+    productImage.src = selectedVariant.image;
 }); 
 });
