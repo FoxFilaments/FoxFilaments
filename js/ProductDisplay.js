@@ -59,7 +59,7 @@ fetch("data/products.json")
         <select id="quantity-select">${quantityOptions}</select>
 
 
-        <button class="cart-button">
+        <button id="cart-button" class="cart-button">
             Add to Cart
         </button>
 
@@ -74,6 +74,8 @@ const colorSelect = document.getElementById("color-select");
 const stockDisplay = document.getElementById("stock-display");
 const productImage = document.getElementById("product-image");
 const quantitySelect = document.getElementById("quantity-select");
+const cartButton = document.getElementById("cart-button");
+
 colorSelect.addEventListener("change", () => {
 
     const selectedColor = colorSelect.value;
@@ -90,4 +92,27 @@ colorSelect.addEventListener("change", () => {
     }
     
 }); 
+
+cartButton.addEventListener("click", () => {
+    
+    const selectedColor = colorSelect.value;
+    const selectedQuantity = Number(quantitySelect.value);
+    let cart = localStorage.getItem("cart");
+    if(cart){
+        cart = JSON.parse(cart);
+    }else{
+        cart = [];
+    }
+
+    const cartItem = {
+        id:product.id,
+        color:selectedColor,
+        quantity:selectedQuantity
+    };
+
+    cart.push(cartItem);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("Added to cart!");
+});
+
 });
