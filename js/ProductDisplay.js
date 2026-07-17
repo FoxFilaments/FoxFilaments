@@ -1,29 +1,35 @@
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
+const selectedColor = params.get("color");
 const productInfo = document.getElementById("product-info");
 
 fetch("data/products.json")
     .then(response => response.json())
     .then(products => {
         const product = products.find(p => p.id == id);
+        let currentVariant = product.variants[0];
         let colorOptions ="";
         let quantityOptions = "";
+        if(selectedColor) {
+            const found = product.variants.find(v => v.color == selectedColor);
+            if(found) {currentVariant = found;}
+        }
         if(product.variants)
         {
             product.variants.forEach((variant, index) => {
-                colorOptions += `<option value="${variant.color}" ${index === 0 ? "selected" : ""}>${variant.color}</option>`;
+                colorOptions += `<option value="${variant.color}" ${variant.color == currentVariant.color ? "selected" : ""}>${variant.color}</option>`;
             });
         } else {
             colorOptions = `<option>Default</option>`
         }
-        for(let i = 1; i <= product.variants[0].stock; i++) {
+        for(let i = 1; i <= currentVariant.stock; i++) {
             quantityOptions += `<option>${i}</option>`
         }
         productInfo.innerHTML = `
 <div class="product-page">
 <div class="product-image">
 
-    <img id="product-image" src="${product.variants[0].image}" alt="${product.name}">
+    <img id="product-image" src="${currentVariant.image}" alt="${product.name}">
 
 </div>
 

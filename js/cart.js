@@ -7,16 +7,17 @@ fetch("data/products.json")
     .then(products => {
         cart.forEach((cartItem, index) => {
             const product = products.find(p => p.id == cartItem.id);
+            const variant = product.variants.find(v => v.color == cartItem.color);
             let newcost = product.price * cartItem.quantity;
             cartcost += newcost;
-            itemlist.innerHTML+=`<a href="product.html?id=${product.id}">
+            itemlist.innerHTML+=`<a href="product.html?id=${product.id}&color=${cartItem.color}">
                                         <div class="product-card">
-                                            <img src=${product.variants[0].image} alt=${product.name}>
+                                            <img src=${variant.image} alt=${product.name}>
                                             <h3>${product.name} x(${cartItem.quantity})</h3>
                                             <p>$${Math.round(product.price * cartItem.quantity * 100)/100}</p>
                                         </div>
                                         <div class="stock">
-                                            <p>${product.variants[0].stock} left in stock</p>
+                                            <p>${variant.stock} left in stock</p>
                                         </div>
                                     </a>
                                     <button class="add" data-index="${index}">+</button>
@@ -28,7 +29,13 @@ fetch("data/products.json")
         addbuttons.forEach(button => {
             button.addEventListener("click", () => {
                 const index = Number(button.dataset.index);
-                cart[index].quantity++;
+                const product = products.find(p => p.id == cart[index].id);
+                const variant = product.variants.find(v =>
+                    v.color == cart[index].color
+                );
+                if(cart[index].quantity < variant.stock) {
+                    cart[index].quantity++;
+                }
                 localStorage.setItem("cart", JSON.stringify(cart));
                 location.reload();
             })
