@@ -96,7 +96,6 @@ colorSelect.addEventListener("change", () => {
     for(let i = 1; i <= selectedVariant.stock; i++) {
         quantitySelect.innerHTML += `<option>${i}</option>`;
     }
-    
 }); 
 
 cartButton.addEventListener("click", () => {
