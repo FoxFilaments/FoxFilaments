@@ -47,7 +47,7 @@ fetch("data/products.json")
 
     <div class="product-options">
         
-        <p id="stock-display">${product.variants[0].stock} left in stock</p>
+        <p id="stock-display">${currentVariant.stock} left in stock</p>
 
         <label>
             Color:

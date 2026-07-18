@@ -54,6 +54,12 @@ fetch("data/products.json")
                 location.reload();
             });
         });
+
+        const pay = document.getElementById(".pay");
+        let testnum = 0;
+        pay.addEventListener("click", () => {
+            
+        });
     });
 
 

@@ -159,3 +159,10 @@ nav a:hover{
     width:150px;
     height:150px;
 }
+
+.paybutton {
+    padding:10px;
+    display:inline-block;
+    background:white;
+    color:black;
+}
