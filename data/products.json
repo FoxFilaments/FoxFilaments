@@ -6,12 +6,12 @@
         "variants":[
             {
                 "color":"White",
-                "stock":8,
+                "stock":12,
                 "image":"images/whitefox.jpg"
             },
             {
                 "color":"Orange",
-                "stock":4,
+                "stock":7,
                 "image":"images/orangefox.jpg"
             }
         ],

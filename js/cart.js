@@ -58,7 +58,7 @@ fetch("data/products.json")
         const pay = document.getElementById(".pay");
         let testnum = 0;
         pay.addEventListener("click", () => {
-            
+
         });
     });
 
